@@ -13,6 +13,7 @@ const Wrapper = styled.div`
         justify-content: center;
         height: 30rem;
     }
+
 `
 
 export default function Main() {

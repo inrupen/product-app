@@ -1,0 +1,10 @@
+project_code: product-app
+region: us-east-1
+profile: personal
+stack_tags:
+  {
+    "owner": "nrupen",
+    "application": "nrupen",
+    "application-name": "product-app",
+    "deployed-by": "nrupen",
+  }
