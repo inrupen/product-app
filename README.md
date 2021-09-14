@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Nav App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -27,44 +27,97 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Ovens, fridges and washing machines
 
-### `npm run eject`
+### The Miele Products application assignment
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Create a form which behaves as follows
+  - It will display the following drop down menus
+    - A list of product types, loaded when data available
+    - A list of product names, loaded when data available
+    - A list of product colors, available on page load
+  - All three lists are enabled when data is available.
+  - When selecting an option in on of the list, the other lists are filtered accordingly.
+  - At the bottom of the form all selections will be shown.
+  - You are free to use any tool and/or framework you like, as long as it runs inside a browser and you can explain why that solution will be the most favorable.
+  - Your implementation should be
+    - tested
+    - visually attractive
+    - deployable
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### For example
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. When "white" is selected all product types and product names that have no "white" products are filtered out
+2. When selecting "Triflex HX1 - SMUL0", only the product type and the available colors are selectable
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Data library
 
-## Learn More
+The data are provided by a small service you can find in the `service` folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This service can be accessed by a the global variable `productApplication` and provide a single method `fetchData`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+productApplication.fetchData(callBack);
+```
 
-### Code Splitting
+The callback is called with the full data list as first parameter.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+productApplication.fetchData(function(err, data) {
+  console.log(data);
+});
+```
 
-### Analyzing the Bundle Size
+The data library can be used as a node module.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+var productApplication = require('miele-application');
+productApplication.fetchData(function(err, data) {
+  console.log(data);
+});
+```
 
-### Making a Progressive Web App
+### Coding Assignment Evaluation Guidelines
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To give you an idea what we expect from the implementation of the assignment we came up with
+the following guidelines. In general, treat it as code that will go in production for one of our clients.
 
-### Advanced Configuration
+#### Assignment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Does the code work.
+- Does the code still work when encountering edge cases.
+- Does the code come with instructions.
+- Do all included artifacts have purpose.
 
-### Deployment
+#### Code quality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Is the code structured in a logical way.
+- Could the code be extended.
+- Do functions, classes and modules use the right level of abstraction.
+- Does the code show software engineering best practices and design patterns where applicable.
+- Is the code consistent.
+- Does the code contain descriptive names.
+- Is the code production ready.
+- Does the code base scale to a bigger feature set.
 
-### `npm run build` fails to minify
+#### Frameworks + Language
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- What framework was chosen.
+- Are the features of the framework used according to community best practices.
+- Does the code use features of the framework or language when possible.
+- Are common pitfalls avoided.
+
+#### Testing
+
+- Are there automated test.
+- How are the tests written.
+- What choices are made in testing certain parts of the code.
+- Are the tests written with the right level of abstraction.
+- What test cases are chosen.
+- Does the test code make use of the features of the test framework when applicable.
+
+#### Design + CSS
+
+- How much effort is taken into making the app look nice.
+- Is user experience taken into consideration.
+- How was the UI implemented.
